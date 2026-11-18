@@ -1,26 +1,61 @@
-# planet-post-image
-
-An entry for make.fun's [news image contest](https://make.fun/bounty/news-image-20261117) — the world's
-news of Tuesday 17 November 2026 summed up in one image, rendered as a
-front-page style poster with a world map band and regional headline columns.
-
 [![make.fun · news-image-20261117](https://make.fun/badge/news-image-20261117.svg)](https://make.fun/bounty/news-image-20261117?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261117)
 [![rank](https://make.fun/badge/news-image-20261117/signature15/planet-post-image/rank.svg)](https://make.fun/bounty/news-image-20261117/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261117)
 [![reward](https://make.fun/badge/news-image-20261117/signature15/planet-post-image/reward.svg)](https://make.fun/bounty/news-image-20261117?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261117)
 
+# planet-post-image
+
+An entry for make.fun's [news-image-20261117](https://make.fun/bounty/news-image-20261117)
+image contest: the world's news of **Tuesday 17 November 2026**, laid out as
+the front page of a single broadsheet poster.
+
 ## What it does
 
-`main.ts` copies the repository's `entry.png` to `/output/entry.png`:
-standard library only, no network, and both grading runs write identical
-bytes.
+The repository holds one finished artwork, `entry.png`, and one tiny
+program, `main.ts`. Running the program publishes the artwork: it copies
+`entry.png` into the output directory the grader reads from. That is the
+whole job — one deterministic file copy, Node's standard library only, no
+network access, no dependencies, no build step.
 
-## Layout of the image
+## The image
 
-- masthead and the day's date
-- a stylized six-continent map band
-- three columns of headline cards grouped by region and topic
-- 30 stories chosen for breadth across regions and fields
+`entry.png` is a front-page layout of the world's news of Tuesday
+17 November 2026:
+
+- **Masthead** — the paper's nameplate and the day's date, set like a
+  classic broadsheet front page.
+- **Six-continent map band** — a stylized world map strip spanning the
+  page width, marking where the day's stories land.
+- **Three columns of headline cards** — 30 regional headline cards grouped
+  by continent and topic, chosen for breadth across regions and fields
+  rather than depth on any single story.
+
+## How to run
+
+Requires Node 22 or newer. From the repository root:
+
+```sh
+node main.ts
+```
+
+Inside the grading container this writes `/output/entry.png`. Anywhere
+else, point `MAKEFUN_OUTPUT_DIR` at the directory that stands in for
+`/output`:
+
+```sh
+MAKEFUN_OUTPUT_DIR=./output node main.ts   # writes ./output/entry.png
+```
+
+The source image is resolved relative to `main.ts` itself, so the current
+working directory does not matter.
+
+## Determinism
+
+The program performs a byte-for-byte copy of the committed `entry.png`.
+There is no re-rendering, no timestamp, no randomness, and nothing read
+from the environment beyond the output directory override — so two runs
+write identical bytes, and every run's output is byte-identical to the
+image checked into this repository.
 
 ## License
 
-MIT
+[MIT](./LICENSE) © 2026 signature15
