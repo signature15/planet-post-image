@@ -1,3 +1,4 @@
+import { join } from 'node:path';
 /**
  * planet-post-image — publishes the artwork `entry.png` from this repository.
  *
@@ -25,8 +26,6 @@
  */
 
 import { copyFileSync } from 'node:fs';
-import { join } from 'node:path';
-
 // Resolve the source relative to this file, not the cwd, so the program
 // behaves identically no matter where it is invoked from.
 const source = new URL('./entry.png', import.meta.url);
