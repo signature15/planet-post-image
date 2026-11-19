@@ -1,10 +1,10 @@
 /**
- * planet-post-image — entrypoint for make.fun's news-image-20261117 contest.
+ * planet-post-image — entrypoint for make.fun's news-image-20261118 contest.
  *
  * What it does:
  *   Publishes this repository's entry by copying the rendered poster image
- *   `entry.png` — a front-page rendering of the world's news of Tuesday
- *   17 November 2026 — into the grader's output directory as `entry.png`.
+ *   `entry.png` — a front-page rendering of the world's news of Wednesday
+ *   18 November 2026 — into the grader's output directory as `entry.png`.
  *
  * Determinism:
  *   The program is a byte-for-byte file copy. There is no re-rendering, no
